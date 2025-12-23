@@ -1,6 +1,7 @@
 package com.example.PracticeSpringBoot.controller;
 
 import com.example.PracticeSpringBoot.model.Student;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class StudentController {
 
     //creating
     @PostMapping
-    public ResponseEntity<List<Student>> createStudent(@RequestBody Student studentObj) {
+    public ResponseEntity<List<Student>> createStudent(@Valid @RequestBody Student studentObj) {
         studentObj.setId(nextId++);
         students.add(studentObj);
         return new ResponseEntity<>(students, HttpStatus.OK);

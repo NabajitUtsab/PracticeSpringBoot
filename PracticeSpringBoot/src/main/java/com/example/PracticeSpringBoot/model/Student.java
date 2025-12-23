@@ -1,9 +1,12 @@
 package com.example.PracticeSpringBoot.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 
 import lombok.NoArgsConstructor;
-
 
 
 
@@ -12,9 +15,16 @@ import lombok.NoArgsConstructor;
 public class Student {
 
 
+
     private Long id;
+
+    @NotNull(message = "Name can not be null")
     private String name;
+
+    @Min(value = 20 , message = "Age should be greater than 20")
     private int age;
+
+    @Size(min = 10, max = 20 , message = "Big email not allowed ")
     private String email;
 
     public Long getId() {
